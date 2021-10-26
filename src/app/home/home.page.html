@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Práctica 7
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="tipoCurso==null">
+    <ion-list>
+      <ion-radio-group [(ngModel)]="tipoCurso">
+        <ion-item>
+          <ion-label>ESO</ion-label>
+          <ion-radio slot="start" value="ESO"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Ciclo</ion-label>
+          <ion-radio slot="start" value="Ciclo"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </div>
+  <div *ngIf="tipoCurso==='ESO'">
+    <ion-list>
+      <ion-radio-group [(ngModel)]="cursoESO">
+        <ion-item>
+          <ion-label>1º ESO</ion-label>
+          <ion-radio slot="start" value="1º ESO"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>2º ESO</ion-label>
+          <ion-radio slot="start" value="2º ESO"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>3º ESO</ion-label>
+          <ion-radio slot="start" value="3º ESO"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>4º ESO</ion-label>
+          <ion-radio slot="start" value="4º ESO"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    <ion-item>
+      <ion-checkbox slot="start" [(ngModel)]="repiteESO"></ion-checkbox>
+      <ion-label>Repite</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-button expand="block" (click)="aceptar()" [disabled]="!cursoESO != ''">Aceptar</ion-button>
+    </ion-item>
+  </div>
+  <div *ngIf="tipoCurso==='Ciclo'">
+    <ion-item>
+      <ion-label>Ciclos</ion-label>
+      <ion-select [(ngModel)]="cursoCiclo">
+        <ion-select-option *ngFor="let cursoCiclo of cursosCiclo">{{ cursoCiclo }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-button expand="block" (click)="aceptar()" [disabled]="!cursoCiclo != ''">Aceptar</ion-button>
+    </ion-item>
+  </div>
+</ion-content>
